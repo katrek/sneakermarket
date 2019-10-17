@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% include 'partials/_navbar.html' %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+            {% for sneaker in sneakers %}
+              <div class="col-lg-4 col-md-6 mb-4">
+                  <figure class="imghvr-fade">
+                    <img class="img-fluid" src="{{ sneaker.model_photo.url }}" style="width: 500; height: 195px;" alt="">
+                    <figcaption>
+                        {{ sneaker.model_name }} <br>
+                        Price: ${{ sneaker.model_price }} <br>
+                        Owner: {{ sneaker.author }}
+                    </figcaption>
+                        <a href="{% url 'sneaker-details' sneaker.id %}"></a>
+                  </figure>
+              </div>
+           {% endfor %}
+    </div>
+</div>
+{% else %}
+        <main role="main" class="container">
+
+      <div class="starter-template">
+        <h1>Hey there! 👋</h1>
+        <p class="lead">To use our market you need to <a href="{% url 'login' %}">login</a></p><br>
+
+      </div>
+{% endif %}
+{% endblock content %}

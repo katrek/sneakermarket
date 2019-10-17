@@ -1,0 +1,37 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.latest-models {
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.signup {
+}
+
+.login {
+    padding-top: 7%;
+}
+
+.detail-img{
+    text-align: center;
+    width: 600px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detail-sneaker-author {
+    margin-top: -35px;
+    margin-bottom: -10px;
+}
+
+.change-pass {
+    margin-top: -10px;
+    background-color: aqua;
+}

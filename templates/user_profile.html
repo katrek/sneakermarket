@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'partials/_navbar.html' %}
+
+
+<div class="starter-template">
+    <h1>Hello, <b>{{ user.username }}</b> 👋</h1>
+    <p class="lead">How's the weather in <b>{{ user.country }}, {{ user.city }}?</b></p> <br>
+    <div class="change-pass">
+        <p class="lead change-pass"><a href="{% url 'password_change' %}">Change password</a></p>
+    </div>
+</div>
+
+  <div class="latest-models">
+      <h4>My listings:</h4>
+      <div class="row">
+        {% if sneakers %}
+        {% for sneaker in sneakers %}
+          <div class="col-lg-4 col-md-6 mb-4">
+              <figure class="imghvr-fade">
+                <img class="img-fluid" src="{{ sneaker.model_photo.url }}" alt="">
+                <figcaption>
+                    {{ sneaker.model_name }}
+                </figcaption>
+                    <a href="{% url 'sneaker-details' sneaker.id %}"></a>
+              </figure>
+          </div>
+      {% endfor %}
+      {% else %}
+            <div class="starter-template">
+                <p class="lead">No listings yet</p>
+            </div>
+      {% endif %}
+
+{% endblock %}
