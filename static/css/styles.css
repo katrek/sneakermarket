@@ -31,7 +31,22 @@ body {
     margin-bottom: -10px;
 }
 
+.user-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.user-avatar-list {
+    width: 30px;
+    height: 30px;
+}
+
+.user-sneakers-list {
+    text-align: center;
+    padding-top: 5px;
+}
+
 .change-pass {
-    margin-top: -10px;
-    background-color: aqua;
+    text-align: center;
+    padding-top: -5px;
 }

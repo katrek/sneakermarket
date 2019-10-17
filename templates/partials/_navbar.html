@@ -13,7 +13,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="{% url 'add-sneakers' %}">Add sneakers</a>
-              <a class="dropdown-item" href="{% url 'user-profile' user.pk %}">My profile</a>
+              <a class="dropdown-item" href="{% url 'single-user-profile'%}">My profile</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
           </div>
 
@@ -29,6 +29,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {% if 'about' in request.path %} active {% endif %}" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/users/' %} active {% endif %}" href="{% url 'users-list' %}">Users</a>
           </li>
         </ul>
       </div>
