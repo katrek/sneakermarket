@@ -1,17 +1,33 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 {% include 'partials/_navbar.html' %}
+<div class="container">
+        <div class="search-form">
+            <form method="get">
+                    <div class="row">
+                <div class="col-2">
+                    {{ filter.form.model_name|as_crispy_field }}
+                </div>
+                <div class="col-2">
+                    {{ filter.form.model_brand|as_crispy_field }}
+                </div>
+                    <button type="submit" class="btn btn-light">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
 {% if user.is_authenticated %}
 <div class="container">
     <div class="row">
-            {% for sneaker in sneakers %}
+    {% for sneaker in filter.qs %}
               <div class="col-lg-4 col-md-6 mb-4">
                   <figure class="imghvr-fade">
                     <img class="img-fluid" src="{{ sneaker.model_photo.url }}" style="width: 500; height: 195px;" alt="">
                     <figcaption>
                         {{ sneaker.model_name }} <br>
+                        Model: {{ sneaker.model_brand }}<br>
                         Price: ${{ sneaker.model_price }} <br>
                         Owner: {{ sneaker.author }}
                     </figcaption>

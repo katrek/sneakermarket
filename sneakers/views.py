@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .models import Sneakers
 from .forms import SneakersForm
 from django.urls import reverse_lazy
+from .filters import SneakerFilter
+from django.shortcuts import render
 
 
 
@@ -10,9 +12,14 @@ class SneakersView(ListView):
     model = Sneakers
     template_name = 'sneakers.html'
     context_object_name = 'sneakers'
-    paginate_by = 6
     ordering = ['-pk']
 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = SneakerFilter(self.request.GET,
+                                          queryset=self.get_queryset())
+        return context
 
 class SneakerDetailView(DetailView):
     model = Sneakers

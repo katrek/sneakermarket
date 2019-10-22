@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sneakers.apps.SneakersConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

@@ -4,17 +4,26 @@
 {% include 'partials/_navbar.html' %}
 
 
-<div class="starter-template">
-    <span> <img src="{{ user.avatar.url }}" alt="..." class="img-thumbnail user-avatar"></span>
-    <h1>Hello, <b>{{ user.username }}</b> 👋</h1>
-    <p class="lead">How's the weather in <b>{{ user.country }}, {{ user.city }}?</b></p> <br>
-    <div class="change-pass">
-        <p><a href="{% url 'password_change' %}">Change password</a></p>
-        <p><a href="{% url 'profile-edit' %}">Change username</a></p>
+<div class="container user-container">
+  <div class="row">
+    <div class="col-md-6 img">
+      <img src="{{ user.avatar.url }}"  alt="" class="img-rounded user-avatar">
     </div>
-</div>
-
-  <div class="user-sneakers-list">
+    <div class="col-md-6 details">
+      <blockquote>
+        <h5>{{ user.username }}</h5>
+        <small><cite title="Source Title">City: {{ user.city }}, Country: {{ user.country }}  <i class="icon-map-marker"></i></cite></small>
+          <br>
+        <small><cite title="Source Title">Name: {{ user.name }}</cite></small>
+      </blockquote>
+      <p>
+          <a href="{% url 'profile-edit' %}">Change username</a> <br>
+          <a href="{% url 'password_change' %}">Change password</a> <br>
+        Joined date: {{ user.date_joined }}
+      </p>
+    </div>
+  </div>
+      <div class="user-sneakers-list">
       <h4>My sneakers:</h4>
       <div class="row">
         {% if sneakers %}
@@ -35,5 +44,9 @@
                 <a href="{% url 'add-sneakers' %}"><p class="lead">Add sneakers</p></a>
             </div>
       {% endif %}
+
+</div>
+
+
 
 {% endblock %}

@@ -7,18 +7,23 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 
-
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
 
-# class UserProfileView(LoginRequiredMixin, DetailView):
-#     template_name = 'user_profile.html'
-#     model = CustomUser
-#     login_url = 'login'
-#     context_object_name = 'user'
+class UserProfile(DetailView):
+    model = CustomUser
+    template_name = 'user_profile.html'
+    context_object_name = 'user'
+
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sneakers'] = Sneakers.objects.all().filter(author=self.kwargs['pk'])
+        return context
 
 
 class SingleUserView(LoginRequiredMixin, TemplateView):

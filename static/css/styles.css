@@ -32,8 +32,9 @@ body {
 }
 
 .user-avatar {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    margin-left: 40%;
 }
 
 .user-avatar-list {
@@ -49,4 +50,21 @@ body {
 .change-pass {
     text-align: center;
     padding-top: -5px;
+}
+
+.user-container{
+    padding:5%;
+}
+.container .img{
+    text-align:center;
+}
+.container .details{
+    border-left:3px solid #ded4da;
+}
+.container .details p{
+    font-size:15px;
+    font-weight:bold;
+}
+.user-sneakers-list {
+    padding-top: 10%;
 }
